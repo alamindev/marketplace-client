@@ -11,6 +11,10 @@
   "dependencies": {
     "nuxt": "^2.14.0"
   },
+  "engines": {
+    "node": "12.x",
+    "npm": "6.0.0"
+  },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^2.1.0"
   }
