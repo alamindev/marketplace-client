@@ -3,36 +3,36 @@
     <div class="py-10  px-5 md:px-0 bg-indigo-100">
         <div class="container mx-auto grid md:grid-cols-4 gap-4">
             <div class="p-1 text-center md:text-left">
-                <p class="font-bold pb-3 text-blue-800"> Music</p>
+                <p class="font-bold pb-3 color-primary"> Music</p>
                 <ul class="list-none">
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">About us</a></li>
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">Jobs</a></li>
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">Blog</a></li>
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">Sign in</a></li>
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">Sign UP</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">About us</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">Jobs</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">Blog</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">Sign in</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">Sign UP</a></li>
                 </ul>
             </div>
             <div class="p-1 text-center md:text-left">
-                <p class="font-bold pb-3 text-blue-800"> Buying</p>
+                <p class="font-bold pb-3 color-primary"> Buying</p>
                 <ul class="list-none">
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">Browse Beats</a></li>
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">Top Selling Beats</a></li>
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">Recent Beats</a></li>
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">Free Beats</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">Browse Beats</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">Top Selling Beats</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">Recent Beats</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">Free Beats</a></li>
                 </ul>
             </div>
             <div class="p-1 text-center md:text-left">
-                <p class="font-bold pb-3 text-blue-800"> Selling</p>
+                <p class="font-bold pb-3 color-primary"> Selling</p>
                 <ul class="list-none">
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">Price</a></li>
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">Why Airbit</a></li>
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">Selling Tools</a></li>
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">Infinity Store</a></li>
-                    <li class="pb-2"><a href="#" class="text-blue-800 ">YouTube Monitaization</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">Price</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">Why Airbit</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">Selling Tools</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">Infinity Store</a></li>
+                    <li class="pb-2"><a href="#" class="color-primary ">YouTube Monitaization</a></li>
                 </ul>
             </div>
             <div class="p-1 text-center md:text-left">
-                <p class="font-bold pb-2 text-blue-800"> Follow Us</p>
+                <p class="font-bold pb-2 color-primary"> Follow Us</p>
                 <ul class="list-none flex justify-center md:justify-start">
                     <li class="pr-3"><a href="#" class="text-blue-500">
                             <font-awesome-icon class="text-xl" :icon="['fab', 'youtube']" />

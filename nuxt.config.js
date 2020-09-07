@@ -28,7 +28,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['vue-slick-carousel/dist/vue-slick-carousel.css'],
+  css: ['vue-slick-carousel/dist/vue-slick-carousel.css', 'assets/fonts/font.css','assets/css/style.css'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -68,7 +68,9 @@ export default {
          }
        ]
       }
-]
+],
+'@nuxtjs/axios',
+'@nuxtjs/auth'
   ],
   /*
   ** Build configuration
