@@ -43,7 +43,7 @@
     </div>
     <div class="py-5 px-5 md:px-0">
         <div class="container mx-auto flex justify-between">
-            <h2 class="text-2xl font-bold uppercase text-indigo-800">Latest Tracks</h2>
+            <h2 class="text-base md:text-2xl font-bold uppercase text-indigo-800">Latest Tracks</h2>
             <div class="pl-1 flex items-center">
                 <button type="button" @click="showPrev1" class="border-none bg-transparent px-1">
                     <font-awesome-icon class="text-3xl text-indigo-800" :icon="['fas', 'arrow-alt-circle-left']" />
@@ -51,7 +51,7 @@
                 <button type="button" @click="showNext1" class="border-none bg-transparent px-1">
                     <font-awesome-icon class="text-3xl text-indigo-800" :icon="['fas', 'arrow-alt-circle-right']" />
                 </button>
-                <a href="#" class="bg-indigo-800 text-white py-1 ml-3 px-5 rounded-full">View All</a>
+                <a href="#" class="bg-indigo-800 text-white py-1 ml-1 md:ml-3 px-3 md:px-5 rounded-full">View All</a>
             </div>
         </div>
         <div class="container mx-auto py-8">
@@ -106,7 +106,7 @@
     </div>
     <div class="py-12   px-5 md:px-0 bg-gradient-to-r from-indigo-800  to-blue-500">
         <div class="container mx-auto flex justify-between">
-            <h2 class="text-2xl font-bold uppercase text-white">Top in Genre(s)</h2>
+            <h2 class="text-base md:text-2xl  font-bold uppercase text-white">Top in Genre(s)</h2>
             <div class="pl-1 flex items-center">
                 <button type="button" @click="showPrev2" class="border-none bg-transparent px-1">
                     <font-awesome-icon class="text-3xl text-indigo-800" :icon="['fas', 'arrow-alt-circle-left']" />
@@ -114,7 +114,7 @@
                 <button type="button" @click="showNext2" class="border-none bg-transparent px-1">
                     <font-awesome-icon class="text-3xl text-indigo-800" :icon="['fas', 'arrow-alt-circle-right']" />
                 </button>
-                <a href="#" class="bg-indigo-800 text-white py-1 ml-3 px-5 rounded-full">View All</a>
+                <a href="#" class="bg-indigo-800 text-white py-1 ml-1 md:ml-3 px-3 md:px-5 rounded-full">View All</a>
             </div>
         </div>
         <div class="container mx-auto py-8">
@@ -169,7 +169,7 @@
     </div>
     <div class="py-10  px-5 md:px-0">
         <div class="container mx-auto flex justify-between">
-            <h2 class="text-2xl font-bold uppercase text-indigo-800">Feature Beats</h2>
+            <h2 class="text-base md:text-2xl  font-bold uppercase text-indigo-800">Feature Beats</h2>
             <div class="pl-1 flex items-center">
                 <button type="button" @click="showPrev3" class="border-none bg-transparent px-1">
                     <font-awesome-icon class="text-3xl text-indigo-800" :icon="['fas', 'arrow-alt-circle-left']" />
@@ -177,7 +177,7 @@
                 <button type="button" @click="showNext3" class="border-none bg-transparent px-1">
                     <font-awesome-icon class="text-3xl text-indigo-800" :icon="['fas', 'arrow-alt-circle-right']" />
                 </button>
-                <a href="#" class="bg-indigo-800 text-white py-1 ml-3 px-5 rounded-full">View All</a>
+                <a href="#" class="bg-indigo-800 text-white py-1 ml-1 md:ml-3 px-3 md:px-5 rounded-full">View All</a>
             </div>
         </div>
         <div class="container mx-auto py-8">
