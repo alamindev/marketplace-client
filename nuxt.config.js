@@ -23,13 +23,16 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ], 
   },
   /*
-  ** Global CSS
-  */
-  css: [
-  ],
+   ** Global CSS
+   */
+  css: ['vue-slick-carousel/dist/vue-slick-carousel.css'],
+  /*
+   ** Plugins to load before mounting the App
+   */
+  plugins: [{ src: './plugins/vue-slick-carousel.js' }],
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
@@ -51,7 +54,21 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: [
+  modules: [ 
+    [
+      'nuxt-fontawesome', {
+        imports: [
+         {
+           set: '@fortawesome/free-solid-svg-icons',
+           icons: ['fas']
+         },
+         {
+           set:'@fortawesome/free-brands-svg-icons',
+           icons: ['fab']
+         }
+       ]
+      }
+]
   ],
   /*
   ** Build configuration
