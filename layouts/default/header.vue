@@ -1,5 +1,5 @@
 <template>
-<header class="bg-white">
+<header class="bg-white custom__shadow">
     <nav class="container mx-auto flex items-center justify-between flex-wrap px-4 lg:px-0 py-6 ">
         <div class="flex items-center flex-shrink-0 text-dark mr-6">
             <span class="font-semibold text-xl tracking-tight uppercase">Logo</span>
@@ -48,5 +48,9 @@ export default {
 <style lang="scss">
 #menu-toggle:checked+#menu {
     display: block;
+}
+
+.custom__shadow {
+    box-shadow: 0px 3px 6px #00000029;
 }
 </style>

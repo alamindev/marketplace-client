@@ -1,5 +1,6 @@
 
 export default {
+  
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -28,17 +29,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['vue-slick-carousel/dist/vue-slick-carousel.css', 'assets/fonts/font.css','assets/css/style.css'],
-  /*
-   ** Plugins to load before mounting the App
-   */
-  plugins: [{ src: './plugins/vue-slick-carousel.js' }],
-  /*
-  ** Plugins to load before mounting the App
-  ** https://nuxtjs.org/guide/plugins
-  */
-  plugins: [
-  ],
+  css: ['vue-slick-carousel/dist/vue-slick-carousel.css', 'assets/fonts/font.css','assets/css/style.css'], 
   /*
   ** Auto import components
   ** See https://nuxtjs.org/api/configuration-components
@@ -65,7 +56,11 @@ export default {
          {
            set:'@fortawesome/free-brands-svg-icons',
            icons: ['fab']
-         }
+         },
+         {
+          set:'@fortawesome/free-regular-svg-icons',
+          icons: ['far']
+        }
        ]
       }
 ],
@@ -76,6 +71,76 @@ export default {
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
-  build: {
+  build: { 
+  },
+ /*
+  ** Plugins to load before mounting the App
+  */
+ plugins: [
+  './plugins/mixins/validation', 
+  './plugins/mixins/user', 
+  './plugins/axios',
+  './plugins/vue-slick-carousel.js',  
+  { src: './plugins/custom.js', ssr: false } 
+],
+
+router: {
+  middleware: [
+    'clearValidationErrors', 
+  ] 
+},
+
+env: {
+  baseUrl: process.env.BASE_URL || 'http://localhost:8000/api/'
+},
+
+auth: {
+  strategies: {
+    local: {
+      endpoints: {
+        login: {
+          url: 'auth/login', method: 'post', propertyName: 'token'
+        },
+        user: {
+          url: 'me', method: 'get', propertyName: 'data'
+        },
+        logout: {
+          method: 'get',
+          url: 'auth/logout', method: 'get'
+        }
+      }
+    }
+  },
+  redirect: {
+    login: '/login',
+    logout: '/',
+    // callback: '/login',
+    home: '/'
+  },
+  plugins: [
+    './plugins/auth'
+  ]
+},
+  /*
+  ** Axios module configuration
+  */
+ axios: { 
+  baseURL: "http://localhost:8000/api/",
+},
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '/login',
+        components: {
+          default: resolve(__dirname, 'pages/auth/login') 
+        } 
+      });
+      routes.push({
+        path: '/register',
+        components: {
+          default: resolve(__dirname, 'pages/auth/register') 
+        } 
+      });
+    }
   }
 }

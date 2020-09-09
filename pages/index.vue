@@ -59,42 +59,63 @@
                 <VueSlickCarousel v-bind="slickOptions" ref="carousel">
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-1.jpg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <img src="/images/img-1.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
                             <h2 class="text-lg font-bold color-primary">Dynamite</h2>
                             <p class="text-base color-muted">By BTS</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-2.jpeg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <img src="/images/img-2.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
                             <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
                             <p class="text-base color-muted">By DaBaby</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-3.jpg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <img src="/images/img-3.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
                             <h2 class="text-lg font-bold color-primary">Blinding lights</h2>
                             <p class="text-base color-muted">By the Weekend</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-4.jpeg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <img src="/images/img-4.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
                             <h2 class="text-lg font-bold color-primary">Tap In</h2>
                             <p class="text-base color-muted">By Saweetie</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-3.jpg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <img src="/images/img-5.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
                             <h2 class="text-lg font-bold color-primary">Blinding lights</h2>
                             <p class="text-base color-muted">By the Weekend</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-2.jpeg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <img src="/images/img-6.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
+                            <p class="text-base color-muted">By DaBaby</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="py-2 mx-5 custom__carousel">
+                            <img src="/images/img-7.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
+                            <p class="text-base color-muted">By DaBaby</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="py-2 mx-5 custom__carousel">
+                            <img src="/images/img-8.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
+                            <p class="text-base color-muted">By DaBaby</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="py-2 mx-5 custom__carousel">
+                            <img src="/images/img-9.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
                             <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
                             <p class="text-base color-muted">By DaBaby</p>
                         </div>
@@ -122,43 +143,64 @@
                 <VueSlickCarousel v-bind="slickOptions" ref="carousel2">
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-1.jpg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
-                            <h2 class="text-lg font-bold text-white">Dynamite</h2>
+                            <img src="/images/img-1.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">Dynamite</h2>
                             <p class="text-base color-muted">By BTS</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-2.jpeg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
-                            <h2 class="text-lg font-bold text-white">BlAME IT ON</h2>
+                            <img src="/images/img-2.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
                             <p class="text-base color-muted">By DaBaby</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-3.jpg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
-                            <h2 class="text-lg font-bold text-white">Blinding lights</h2>
+                            <img src="/images/img-3.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">Blinding lights</h2>
                             <p class="text-base color-muted">By the Weekend</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-4.jpeg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
-                            <h2 class="text-lg font-bold text-white">Tap In</h2>
+                            <img src="/images/img-4.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">Tap In</h2>
                             <p class="text-base color-muted">By Saweetie</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-3.jpg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
-                            <h2 class="text-lg font-bold text-white">Blinding lights</h2>
+                            <img src="/images/img-5.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">Blinding lights</h2>
                             <p class="text-base color-muted">By the Weekend</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-2.jpeg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
-                            <h2 class="text-lg font-bold text-white">BlAME IT ON</h2>
+                            <img src="/images/img-6.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
+                            <p class="text-base color-muted">By DaBaby</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="py-2 mx-5 custom__carousel">
+                            <img src="/images/img-7.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
+                            <p class="text-base color-muted">By DaBaby</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="py-2 mx-5 custom__carousel">
+                            <img src="/images/img-8.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
+                            <p class="text-base color-muted">By DaBaby</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="py-2 mx-5 custom__carousel">
+                            <img src="/images/img-9.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
                             <p class="text-base color-muted">By DaBaby</p>
                         </div>
                     </div>
@@ -185,47 +227,67 @@
                 <VueSlickCarousel v-bind="slickOptions" ref="carousel3">
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-1.jpg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <img src="/images/img-1.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
                             <h2 class="text-lg font-bold color-primary">Dynamite</h2>
                             <p class="text-base color-muted">By BTS</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-2.jpeg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <img src="/images/img-2.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
                             <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
                             <p class="text-base color-muted">By DaBaby</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-3.jpg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <img src="/images/img-3.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
                             <h2 class="text-lg font-bold color-primary">Blinding lights</h2>
                             <p class="text-base color-muted">By the Weekend</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-4.jpeg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <img src="/images/img-4.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
                             <h2 class="text-lg font-bold color-primary">Tap In</h2>
                             <p class="text-base color-muted">By Saweetie</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-3.jpg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <img src="/images/img-5.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
                             <h2 class="text-lg font-bold color-primary">Blinding lights</h2>
                             <p class="text-base color-muted">By the Weekend</p>
                         </div>
                     </div>
                     <div>
                         <div class="py-2 mx-5 custom__carousel">
-                            <img src="/img-2.jpeg" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <img src="/images/img-6.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
                             <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
                             <p class="text-base color-muted">By DaBaby</p>
                         </div>
                     </div>
-
+                    <div>
+                        <div class="py-2 mx-5 custom__carousel">
+                            <img src="/images/img-7.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
+                            <p class="text-base color-muted">By DaBaby</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="py-2 mx-5 custom__carousel">
+                            <img src="/images/img-8.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
+                            <p class="text-base color-muted">By DaBaby</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="py-2 mx-5 custom__carousel">
+                            <img src="/images/img-9.png" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" alt="tracks">
+                            <h2 class="text-lg font-bold color-primary">BlAME IT ON</h2>
+                            <p class="text-base color-muted">By DaBaby</p>
+                        </div>
+                    </div>
                 </VueSlickCarousel>
             </div>
         </div>
