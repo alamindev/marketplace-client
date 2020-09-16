@@ -10,4 +10,5 @@ export default function({ $axios, store }) {
     $axios.onRequest(() => {
         store.dispatch('validation/clearErrors');
     });
+     $axios.setBaseURL('http://localhost:8000/api/')
 }

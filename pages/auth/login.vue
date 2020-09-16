@@ -20,7 +20,7 @@
             </div>
         </form>
         <div class="loing-wrapper flex justify-between">
-            <a href="#" class="register-link">Register</a>
+            <nuxt-link to="/register" class="register-link">Register</nuxt-link>
             <a href="#" class="forget-link">Forget password?</a>
         </div>
     </div>
@@ -56,9 +56,12 @@ export default {
                 if (this.user.is_admin === 1) {
                     this.$router.push(this.$route.query.redirect ? this.$route.query.redirect : '/admin/dashboard');
                 } else {
-                    this.$router.push(this.$route.query.redirect ? this.$route.query.redirect : '/');
+                    if (this.user.is_admin === 0 && this.user.type === 1) {
+                        this.$router.push(this.$route.query.redirect ? this.$route.query.redirect : '/buyer/dashboard');
+                    } else {
+                        this.$router.push(this.$route.query.redirect ? this.$route.query.redirect : '/seller/dashboard');
+                    }
                 }
-
             }
         }
     },

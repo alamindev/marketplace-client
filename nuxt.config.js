@@ -29,7 +29,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['vue-slick-carousel/dist/vue-slick-carousel.css', 'assets/fonts/font.css','assets/css/style.css'], 
+  css: [
+    'vue-slick-carousel/dist/vue-slick-carousel.css', 
+    'assets/fonts/font.css',
+    'assets/css/style.scss', 
+  ], 
   /*
   ** Auto import components
   ** See https://nuxtjs.org/api/configuration-components
@@ -65,14 +69,32 @@ export default {
       }
 ],
 '@nuxtjs/axios',
-'@nuxtjs/auth'
+'@nuxtjs/auth',
+'vue-sweetalert2/nuxt'
   ],
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
-  build: { 
+ build: {
+  loaders: {
+    vue: {
+      transformAssetUrls: {
+        audio: 'src'
+      }
+    }
   },
+
+  extend(config, ctx) {
+    config.module.rules.push({
+      test: /\.(ogg|mp3|wav|mpe?g)$/i,
+      loader: 'file-loader',
+      options: {
+        name: '[path][name].[ext]'
+      }
+    })
+  }
+},
  /*
   ** Plugins to load before mounting the App
   */
@@ -81,7 +103,9 @@ export default {
   './plugins/mixins/user', 
   './plugins/axios',
   './plugins/vue-slick-carousel.js',  
-  { src: './plugins/custom.js', ssr: false } 
+  './plugins/directive.js', 
+  './plugins/vue-js-modal.js',  
+  { src: './plugins/audio.js', ssr:false }
 ],
 
 router: {
@@ -91,7 +115,8 @@ router: {
 },
 
 env: {
-  baseUrl: process.env.BASE_URL || 'http://localhost:8000/api/'
+  baseUrl: process.env.BASE_URL || 'http://api.alamindevbd.com/api/',
+  imgUrl: 'http://api.alamindevbd.com/'
 },
 
 auth: {
@@ -125,7 +150,7 @@ auth: {
   ** Axios module configuration
   */
  axios: { 
-  baseURL: "http://localhost:8000/api/",
+  baseURL: "http://api.alamindevbd.com/api/",
 },
   router: {
     extendRoutes(routes, resolve) {

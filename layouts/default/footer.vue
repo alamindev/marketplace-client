@@ -1,5 +1,5 @@
 <template>
-<footer>
+<footer class="relative">
     <div class="py-10  px-5 md:px-0 bg-indigo-100">
         <div class="container mx-auto grid md:grid-cols-4 gap-4">
             <div class="p-1 text-center md:text-left">
@@ -55,11 +55,32 @@
             <p class="text-center md:text-left pb-10 text-white">&copy; 2020 Website name, Inc.</p>
         </div>
     </div>
+    <audioPlayer />
+
 </footer>
 </template>
 
 <script>
+import cartCounter from '@/components/cartCounter';
+import audioPlayer from '@/components/audioPlayer';
 export default {
-
+    components: {
+        cartCounter,
+        audioPlayer
+    },
 }
 </script>
+
+<style lang="scss">
+.custom-background {
+    background: #999696ba;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16078);
+    opacity: 1;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+}
+
+canvas {
+    width: 100%;
+}
+</style>
