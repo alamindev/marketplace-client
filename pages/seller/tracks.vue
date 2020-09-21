@@ -24,7 +24,7 @@
                             <img v-if="alltrack.image != null" :src="imgurl + 'storage/'+ alltrack.image" width="100" class="rounded-lg" height="100" alt="">
                         </td>
                         <td data-column="Name" class="text-gray-600 px-2 py-2">{{ alltrack.title }}</td>
-                        <td data-column="Genre" class="text-gray-600 px-2 py-2">{{ alltrack.genre.name }}</td>
+                        <td data-column="Genre" class="text-gray-600 px-2 py-2">{{ alltrack.genre?  alltrack.genre.name : ''}}</td>
                         <td data-column="Release Date" class="text-gray-600 px-2 py-2">{{ alltrack.date }}</td>
                         <td data-column="BPM" class="text-gray-600 px-2 py-2">{{ alltrack.bpm }}</td>
                         <td data-column="Basic License" class="text-gray-600 px-2 py-2">{{ alltrack.basic_price }}</td>

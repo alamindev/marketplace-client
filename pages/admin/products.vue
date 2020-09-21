@@ -4,7 +4,7 @@
     <div class="py-5">
         <h2 class="text-lg md:text-2xl font-semibold text-gray-600 pb-3 pt-10">List of Added Products by Users</h2>
 
-        <div class="table--area shadow rounded-lg  bg-white ">
+        <div class="table--area shadow rounded-lg  bg-white " v-if="!loader">
             <table class="lg:w-full table-auto  overflow-y-scroll">
                 <thead>
                     <tr class="text-left">
@@ -18,8 +18,8 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="" v-for="alltrack in allTracks" :key="alltrack.id">
+                <tbody v-if="datas">
+                    <tr class="" v-for="alltrack in datas" :key="alltrack.id">
                         <td class="text-gray-600 px-2 py-3">
                             <img v-if="alltrack.image != null" :src="imgurl + 'storage/'+ alltrack.image" width="100" class="rounded-lg" height="100" alt="">
                         </td>
@@ -41,8 +41,12 @@
                     </tr>
                 </tbody>
             </table>
+            <h2 v-if="!datas" class="text-center p-5 text-red-600 text-lg">Data Not found!</h2>
         </div>
-
+        <div v-else class="loader-parent">
+            <div class="loader"></div>
+        </div>
+        <Paginator @NextData="NextData" :datas.sync="allTracks" />
     </div>
 </div>
 </template>
@@ -52,20 +56,35 @@ import {
     mapActions,
     mapGetters
 } from "vuex";
+import Paginator from '@/components/paginator'
 export default {
     middleware: ['auth', 'admin'],
     layout: 'admin',
+    components: {
+        Paginator
+    },
     data() {
         return {
             imgurl: process.env.imgUrl,
             show: '',
+            loader: false,
+            datas: []
         }
+    },
+    watch: {
+        'allTracks'() {
+            if (this.allTracks) {
+                this.datas = this.allTracks.data
+            }
+        },
     },
     methods: {
         ...mapActions({
             fetchAllTracks: 'admin/tracks/fetchAllTracks',
+            fetchAllTracksPage: 'admin/tracks/fetchAllTracksPage',
             deleteTrack: 'admin/tracks/deleteTrack'
         }),
+
         showManage(id) {
             this.show = id
         },
@@ -81,13 +100,33 @@ export default {
                     this.deleteTrack(id);
                 }
             })
+        },
+        async NextData(pageNum) {
+            this.$router.push('?page=' + pageNum)
+            this.fetchAllTracksPage(pageNum)
+        },
+        async loaded() {
+            this.loader = true;
+            await this.fetchAllTracks();
+            this.loader = false;
+        },
+        async loadedwithparam(param) {
+            this.loader = true;
+            await this.fetchAllTracksPage(param);
+            this.loader = false;
         }
     },
     computed: mapGetters({
         allTracks: 'admin/tracks/allTracks'
     }),
     created() {
-        this.fetchAllTracks();
+        let param = this.$router.history.current.query.page;
+        if (typeof (param) !== 'undefined') {
+            this.loadedwithparam(param)
+        } else {
+            this.loaded();
+        }
+
     }
 }
 </script>

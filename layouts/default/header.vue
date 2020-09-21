@@ -2,7 +2,7 @@
 <header class="bg-white custom__shadow">
     <nav class="container mx-auto flex items-center justify-between flex-wrap px-4 lg:px-0 py-6 ">
         <div class="flex items-center flex-shrink-0 text-dark mr-6">
-            <nuxt-link to="/"> <span class="font-semibold text-xl tracking-tight uppercase">LOGO</span></nuxt-link>
+            <nuxt-link to="/" class="logo"> <span class="font-semibold text-xl tracking-tight uppercase">LOGO</span></nuxt-link>
 
         </div>
 

@@ -171,3 +171,114 @@ and also iPads specifically.
     opacity: 1;
     visibility: visible;
 }
+
+.loader-parent{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+.loader {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    background-color: transparent;
+    border: 5px solid #ECEFF1;
+    border-radius: 50%;
+  }
+  .loader:after {
+    position: absolute;
+    content: "";
+    top: 0px;
+    left: 0px;
+    width: 50px;
+    height: 50px;
+    padding: 3px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #7986CB transparent transparent transparent;
+    border-radius: 50%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    animation: ringrotate .8s infinite ease-in-out;
+    -webkit-animation: ringrotate .8s infinite ease-in-out;
+  }
+  
+/* Animation */
+@keyframes ringrotate {
+    0% {
+      transform: rotateZ(0deg);
+      -webkit-transform: rotateZ(0deg);
+    }
+    100% {
+      transform: rotateZ(360deg);
+      -webkit-transform: rotateZ(360deg);
+    }
+  }
+  @-webkit-keyframes ringrotate {
+    0% {
+      transform: rotateZ(0deg);
+      -webkit-transform: rotateZ(0deg);
+    }
+    100% {
+      transform: rotateZ(360deg);
+      -webkit-transform: rotateZ(360deg);
+    }
+  }
+  
+  
+  .loadersm{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+  }
+  
+.loader-sm{
+    border-top:2px solid #fff;
+    border-right:2px solid transparent;
+    animation: loadersm 800ms linear infinite;
+  }
+  
+  @keyframes loadersm{
+    to{ 
+      transform:rotate(360deg);
+    }
+  }
+
+  /**
+    start coding for pagination
+  */
+
+  .pagination{ 
+    display: none;
+    margin: 10px 5px;
+    border-radius: 5px;
+    overflow: hidden;
+      li{
+        padding: 0 !important;
+        border-right: 1px solid #e7e7e7;
+        &:last-child{
+          border-right: 0;
+        }
+        a{
+          padding:10px 15px;
+          background: white;
+          display: block;
+          color: #666666;
+          &:hover{
+            background-color: #f3f3f3;
+          }
+          &:focus{
+            outline: none;
+            box-shadow: none;
+          }
+        }
+      } 
+}
+.pagination .active a{
+  background-color: #f3f3f3;
+}

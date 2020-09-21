@@ -21,6 +21,12 @@ export const actions = {
           ); 
           commit('SET_ALL_TRACK', data.datas);
     },
+    async fetchAllTracksPage({commit},pageNum) {
+        const {data} = await this.$axios.get(
+            'admin/tracks?page=' + pageNum
+          ); 
+          commit('SET_ALL_TRACK', data.datas);
+    },
     async deleteTrack({commit}, id) {
          await this.$axios.delete(
             'admin/tracks/delete/'+id

@@ -39,7 +39,7 @@
                     <img src="/images/admin/dashboard-img-5.svg" width="71" height="71" alt="">
                 </div>
                 <div class="px-4">
-                    <h2 class="text-3xl font-bold color-blue-500 leading-tight tracking-tighter">{{ totalTransaction ? totalTransaction: '0' }}</h2>
+                    <h2 class="text-3xl font-bold color-blue-500 leading-tight tracking-tighter">${{ totalTransaction ? totalTransaction: '0' }}</h2>
                     <p class="text-base text-gray-600">Transaction</p>
                 </div>
             </div>

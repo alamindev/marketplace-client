@@ -1,7 +1,7 @@
 <template>
 <div class="w-full py-10 px-5 md:px-0 container mx-auto">
     <h3 class="color-primary text-3xl pb-12 text-center md:text-left font-medium">Latest Tracks</h3>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 ">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 " v-if="isSearch">
         <div class="py-4 mx-5 hover__area" v-for="alltrack in allTracks" :key="alltrack.id">
             <div class="relative">
                 <img v-if="alltrack.image != null" :src="imgurl + 'storage/'+ alltrack.image" width="100" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" height="100" alt="">
@@ -26,6 +26,9 @@
         </div>
 
     </div>
+    <div v-else class="loader-parent">
+        <div class="loader"></div>
+    </div>
     <AddToCart />
 </div>
 </template>
@@ -37,6 +40,9 @@ import {
     mapGetters
 } from "vuex";
 export default {
+    components: {
+        AddToCart
+    },
     data() {
         return {
             imgurl: process.env.imgUrl,
@@ -86,6 +92,7 @@ export default {
             getPause: 'audio/getPause',
             getPlay: 'audio/getPlay',
             getDatas: 'cart/getDatas',
+            isSearch: 'tracks/isSearch',
         }),
 
     },

@@ -2,7 +2,7 @@
 <div class="sidebar py-5 px-5 w-64 -ml-64 md:ml-0 fixed top-0 bottom-0 left-0 sidebar--click" :class="isshowing ? 'showing': ''">
     <div class="logo__area pb-3 flex items-center justify-between">
 
-        <nuxt-link to="/">
+        <nuxt-link to="/" class="logo">
             <h1 class="text-gray-800 text-3xl uppercase font-semibold">Logo</h1>
         </nuxt-link>
         <div class="nav__hidebtn block sm:hidden">
@@ -63,7 +63,7 @@ export default {
     transition: .2s all ease-in;
 }
 
-.nuxt-link-exact-active {
+.nuxt-link-active:not(.logo) {
     background-color: #0E3D67;
 }
 

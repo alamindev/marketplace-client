@@ -1,5 +1,5 @@
 <template>
-<footer class="relative">
+<footer>
     <div class="py-10  px-5 md:px-0 bg-indigo-100">
         <div class="container mx-auto grid md:grid-cols-4 gap-4">
             <div class="p-1 text-center md:text-left">

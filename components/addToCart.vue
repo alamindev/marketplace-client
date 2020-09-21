@@ -129,7 +129,8 @@ export default {
                 producer_name: this.sigleCartShow.user ? this.sigleCartShow.user.producer_name : '',
                 total: this.type == 0 ? this.sigleCartShow.basic_price : this.sigleCartShow.premium_price,
                 subtotal: this.type == 0 ? this.sigleCartShow.basic_price : this.sigleCartShow.premium_price,
-                image: this.sigleCartShow.image
+                image: this.sigleCartShow.image,
+                user: this.sigleCartShow.user
             }
 
             this.setCartDatas(newData);

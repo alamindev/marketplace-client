@@ -22,6 +22,12 @@ export const actions = {
           ); 
           commit('SET_LATEST_USER', data.datas); 
     },
+    async fetchAllLatestUsersPage({commit},pageNum) {
+        const {data} = await this.$axios.get(
+            'admin/users?page=' + pageNum
+          ); 
+          commit('SET_LATEST_USER', data.datas);
+    },
     async deleteUser({commit}, id) {
         await this.$axios.delete(
            'admin/users/delete/'+id

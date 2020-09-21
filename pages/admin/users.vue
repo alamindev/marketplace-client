@@ -4,7 +4,7 @@
     <div class="py-5">
         <h2 class="text-lg md:text-2xl font-semibold text-gray-600 pb-3 pt-10">All Users</h2>
 
-        <div class="table--area shadow rounded-lg  bg-white ">
+        <div class="table--area shadow rounded-lg  bg-white " v-if="!loader">
             <table class="lg:w-full table-auto  overflow-y-scroll">
                 <thead>
                     <tr class="text-left">
@@ -18,8 +18,8 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="" v-for="user in latestUsers" :key="user.id">
+                <tbody v-if="datas">
+                    <tr class="" v-for="user in datas" :key="user.id">
                         <td class="text-gray-600 px-2 py-3">
                             <img v-if="user.images != null" :src="imgurl + user.images" width="40" class="rounded-full" height="100" alt="">
                         </td>
@@ -43,8 +43,12 @@
 
                 </tbody>
             </table>
+            <h2 v-if="!datas" class="text-center p-5 text-red-600 text-lg">Data Not found!</h2>
         </div>
-
+        <div v-else class="loader-parent">
+            <div class="loader"></div>
+        </div>
+        <Paginator @NextData="NextData" :datas.sync="latestUsers" />
     </div>
 </div>
 </template>
@@ -54,20 +58,34 @@ import {
     mapActions,
     mapGetters
 } from "vuex";
+import Paginator from '@/components/paginator'
 export default {
     middleware: ['auth', 'admin'],
     layout: 'admin',
+    components: {
+        Paginator
+    },
     data() {
         return {
             imgurl: process.env.imgUrl,
             show: '',
+            loader: false,
+            datas: []
         }
+    },
+    watch: {
+        'latestUsers'() {
+            if (this.latestUsers) {
+                this.datas = this.latestUsers.data
+            }
+        },
     },
     methods: {
         ...mapActions({
-            fetchAllLatestUsers: 'admin/dashboard/fetchAllLatestUsers',
-            deleteUser: 'admin/dashboard/deleteUser',
-            activeDeactive: 'admin/dashboard/activeDeactive',
+            fetchAllLatestUsers: 'admin/users/fetchAllLatestUsers',
+            fetchAllLatestUsersPage: 'admin/users/fetchAllLatestUsersPage',
+            deleteUser: 'admin/users/deleteUser',
+            activeDeactive: 'admin/users/activeDeactive',
         }),
         showManage(id) {
             this.show = id
@@ -105,15 +123,34 @@ export default {
                     }
                 })
             }
+        },
+        async NextData(pageNum) {
+            this.$router.push('?page=' + pageNum)
+            this.fetchAllLatestUsersPage(pageNum)
+        },
+        async loaded() {
+            this.loader = true;
+            await this.fetchAllLatestUsers();
+            this.loader = false;
+        },
+        async loadedwithparam(param) {
+            this.loader = true;
+            await this.fetchAllLatestUsersPage(param);
+            this.loader = false;
         }
     },
 
     computed: mapGetters({
-        latestUsers: 'admin/dashboard/allLatestUsers',
+        latestUsers: 'admin/users/allLatestUsers',
     }),
 
     created() {
-        this.fetchAllLatestUsers();
+        let param = this.$router.history.current.query.page;
+        if (typeof (param) !== 'undefined') {
+            this.loadedwithparam(param)
+        } else {
+            this.loaded();
+        }
     }
 }
 </script>

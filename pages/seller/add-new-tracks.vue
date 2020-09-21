@@ -98,14 +98,16 @@
                 </div>
             </div>
             <div class="flex justify-center">
-                <button type="submit" class="px-10 py-2 btn-bg rounded-full text-white">Submit</button>
+                <button type="submit" class="px-10 py-2 btn-bg rounded-full text-white" :disabled="btn">Submit</button>
             </div>
         </form>
     </div>
+    <ConnectStripe :connected="connected" />
 </div>
 </template>
 
 <script>
+import ConnectStripe from '@/components/seller/connectStripe'
 import Dropzone from 'nuxt-dropzone'
 import 'nuxt-dropzone/dropzone.css'
 import {
@@ -121,6 +123,8 @@ export default {
         return {
             url: process.env.baseUrl,
             track_id: '',
+            connected: false,
+            btn: false,
             optionsaudio: {
                 url: '',
                 autoProcessQueue: false,
@@ -257,17 +261,48 @@ export default {
 
             });
 
+        },
+        async checkStripe() {
+            if (this.user.stripe_connect_id === null) {
+                let code = '';
+                if (Object.keys(this.$route.query).length !== 0) {
+                    code = this.$route.query.code
+                }
+                const {
+                    data
+                } = await this.$axios.get(
+                    'seller/stripe-check', {
+                        params: {
+                            code: code
+                        }
+                    }
+                );
+                if (data.success === false) {
+                    if (data.error) {
+                        this.$swal({
+                            title: data.error,
+                        })
+                    }
+                    this.connected = true
+                    this.btn = true
+                } else {
+                    this.connected = false
+                    this.btn = false
+                }
+            }
         }
     },
     mounted() {
-        this.$refs.audio.dropzone
-        this.$refs.zip.dropzone
-        this.$refs.image.dropzone
+        this.$refs.audio.dropzone;
+        this.$refs.zip.dropzone;
+        this.$refs.image.dropzone;
+        this.checkStripe();
     },
     beforeMount() {
         this.optionsaudio.url = this.url + 'tracks/upload/audio/' + this.user.id;
         this.optionszip.url = this.url + 'tracks/upload/audio/zip/' + this.user.id;
         this.optionsimg.url = this.url + 'tracks/upload/audio/img/' + this.user.id;
+
     },
 }
 </script>

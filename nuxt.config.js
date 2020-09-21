@@ -105,7 +105,10 @@ export default {
   './plugins/vue-slick-carousel.js',  
   './plugins/directive.js', 
   './plugins/vue-js-modal.js',  
-  { src: './plugins/audio.js', ssr:false }
+  './plugins/vue-the-mask.js',  
+  './plugins/cleave.js',  
+  { src: './plugins/audio.js', ssr:false },
+  { src: './plugins/pagination.js', ssr:false }
 ],
 
 router: {
@@ -115,8 +118,8 @@ router: {
 },
 
 env: {
-  baseUrl: process.env.BASE_URL || 'http://api.alamindevbd.com/api/',
-  imgUrl: 'http://api.alamindevbd.com/'
+  baseUrl: process.env.BASE_URL || 'http://localhost:8000/api/',
+  imgUrl: 'http://localhost:8000/'
 },
 
 auth: {
@@ -150,7 +153,7 @@ auth: {
   ** Axios module configuration
   */
  axios: { 
-  baseURL: "http://api.alamindevbd.com/api/",
+  baseURL: "http://localhost:8000/api/",
 },
   router: {
     extendRoutes(routes, resolve) {

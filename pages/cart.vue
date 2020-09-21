@@ -58,7 +58,7 @@
                 <button class="px-10 py-2 btn-bg rounded-full text-white">Apply Coupon</button>
             </div>
             <div class="px-3">
-                <button class="px-10 py-2 btn-bg rounded-full text-white">Proceed to Checkout</button>
+                <button class="px-10 py-2 btn-bg rounded-full text-white" @click="checkOut">Proceed to Checkout</button>
             </div>
         </div>
     </div>
@@ -87,6 +87,9 @@ export default {
         }),
         SingleCartRemove(id) {
             this.removeCart(id)
+        },
+        checkOut() {
+            this.$router.push('/checkout')
         }
     },
     computed: {
