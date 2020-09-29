@@ -118,8 +118,8 @@ router: {
 },
 
 env: {
-  baseUrl: process.env.BASE_URL || 'http://laravel.eclipseweb.site/api/',
-  imgUrl: 'http://laravel.eclipseweb.site/'
+  baseUrl: process.env.BASE_URL || 'https://laravel.eclipseweb.site/api/',
+  imgUrl: 'https://laravel.eclipseweb.site/'
 },
 
 auth: {
@@ -153,7 +153,7 @@ auth: {
   ** Axios module configuration
   */
  axios: { 
-  baseURL: "http://laravel.eclipseweb.site/api/",
+  baseURL: "https://laravel.eclipseweb.site/api/",
 },
   router: {
     extendRoutes(routes, resolve) {
