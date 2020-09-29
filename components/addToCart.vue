@@ -130,6 +130,7 @@ export default {
                 total: this.type == 0 ? this.sigleCartShow.basic_price : this.sigleCartShow.premium_price,
                 subtotal: this.type == 0 ? this.sigleCartShow.basic_price : this.sigleCartShow.premium_price,
                 image: this.sigleCartShow.image,
+                deliverable_audio: this.sigleCartShow.deliverable_audio,
                 user: this.sigleCartShow.user
             }
 

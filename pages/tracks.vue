@@ -2,7 +2,7 @@
 <div class="w-full py-10 px-5 md:px-0 container mx-auto">
     <h3 class="color-primary text-3xl pb-12 text-center md:text-left font-medium">Latest Tracks</h3>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 " v-if="isSearch">
-        <div class="py-4 mx-5 hover__area" v-for="alltrack in allTracks" :key="alltrack.id">
+        <div class="py-4 mx-5 hover__area" v-for="alltrack in datas" :key="alltrack.id">
             <div class="relative">
                 <img v-if="alltrack.image != null" :src="imgurl + 'storage/'+ alltrack.image" width="100" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" height="100" alt="">
                 <div class="overlay absolute left-0 top-0 w-full h-full bg-black bg-opacity-50 rounded-lg transition-all duration-200 ease-in-out">
@@ -30,29 +30,36 @@
         <div class="loader"></div>
     </div>
     <AddToCart />
+    <div class="flex justify-center">
+        <Paginator @NextData="NextData" :datas.sync="allTracks" />
+    </div>
 </div>
 </template>
 
 <script>
 import AddToCart from '@/components/addToCart'
+import Paginator from '@/components/paginator';
 import {
     mapActions,
     mapGetters
 } from "vuex";
 export default {
     components: {
-        AddToCart
+        AddToCart,
+        Paginator
     },
     data() {
         return {
             imgurl: process.env.imgUrl,
             isPlaying: false,
             data: {},
+            datas: []
         }
     },
     methods: {
         ...mapActions({
             fetchAllTracks: 'tracks/fetchAllTracks',
+            fetchAllTracksPage: 'tracks/fetchAllTracksPage',
             setDataAudio: 'audio/setaudioData',
             setPause: 'audio/setPause',
             setCartData: 'cart/setCartData',
@@ -65,6 +72,16 @@ export default {
         },
         addToCart(data) {
             this.setCartData(data)
+        },
+        async NextData(pageNum) {
+            this.$router.push('?page=' + pageNum)
+            this.fetchAllTracksPage(pageNum)
+        },
+        async loaded() {
+            await this.fetchAllTracks();
+        },
+        async loadedwithparam(param) {
+            await this.fetchAllTracksPage(param);
         }
     },
     watch: {
@@ -84,6 +101,11 @@ export default {
                 this.isPlaying = true
             }
         },
+        'allTracks'() {
+            if (this.allTracks) {
+                this.datas = this.allTracks.data
+            }
+        },
     },
     computed: {
         ...mapGetters({
@@ -97,7 +119,12 @@ export default {
 
     },
     created() {
-        this.fetchAllTracks();
+        let param = this.$router.history.current.query.page;
+        if (typeof (param) !== 'undefined') {
+            this.loadedwithparam(param)
+        } else {
+            this.loaded();
+        }
     }
 }
 </script>

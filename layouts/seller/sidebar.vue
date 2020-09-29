@@ -1,7 +1,7 @@
 <template>
 <div class="sidebar py-5 px-5 w-64 -ml-64 md:ml-0 fixed top-0 bottom-0 left-0 sidebar--click" :class="isshowing ? 'showing': ''">
     <div class="logo__area pb-3 flex items-center justify-between">
-        <nuxt-link to="/">
+        <nuxt-link to="/" class="logo">
             <h1 class="text-gray-800 text-3xl uppercase font-semibold">Logo</h1>
         </nuxt-link>
         <div class="nav__hidebtn block sm:hidden">
@@ -57,7 +57,7 @@ export default {
     box-shadow: 0px 3px 6px #00000029;
 }
 
-.nuxt-link-exact-active {
+.nuxt-link-active:not(.logo) {
     background-color: #4285C2;
 
     span {
@@ -78,7 +78,7 @@ export default {
     background-position: center center;
 }
 
-.nuxt-link-exact-active .dashboard {
+.nuxt-link-active .dashboard {
     background: transparent url('/images/admin/sidebar-img-1.svg') 0% 0% no-repeat padding-box;
     background-size: 26px;
     background-position: center center;
@@ -92,7 +92,7 @@ export default {
     background-position: center center;
 }
 
-.nuxt-link-exact-active .tracks {
+.nuxt-link-active .tracks {
     background: transparent url('/images/seller/path-img-white-32.svg') 0% 0% no-repeat padding-box;
     background-size: 26px;
     background-position: center center;

@@ -4,7 +4,7 @@
     <div class="py-5">
         <h2 class="text-lg md:text-2xl font-semibold text-gray-600 pb-3 pt-10">List of Trasks</h2>
 
-        <div class="table--area shadow rounded-lg  bg-white ">
+        <div class="table--area shadow rounded-lg  bg-white " v-if="!loader">
             <table class="lg:w-full table-auto  overflow-y-scroll">
                 <thead>
                     <tr class="text-left">
@@ -18,13 +18,13 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="" v-for="alltrack in allTracks" :key="alltrack.id">
+                <tbody v-if="datas">
+                    <tr class="" v-for="alltrack in datas" :key="alltrack.id">
                         <td class="text-gray-600 px-2 py-3">
-                            <img v-if="alltrack.image != null" :src="imgurl + 'storage/'+ alltrack.image" width="100" class="rounded-lg" height="100" alt="">
+                            <img v-if="alltrack.image != null" :src="imgurl + 'storage/'+ alltrack.image" width="100" class="rounded-lg w-24 h-24" height="100" alt="">
                         </td>
                         <td data-column="Name" class="text-gray-600 px-2 py-2">{{ alltrack.title }}</td>
-                        <td data-column="Genre" class="text-gray-600 px-2 py-2">{{ alltrack.genre?  alltrack.genre.name : ''}}</td>
+                        <td data-column="Genre" class="text-gray-600 px-2 py-2">{{ alltrack.genre_id }}</td>
                         <td data-column="Release Date" class="text-gray-600 px-2 py-2">{{ alltrack.date }}</td>
                         <td data-column="BPM" class="text-gray-600 px-2 py-2">{{ alltrack.bpm }}</td>
                         <td data-column="Basic License" class="text-gray-600 px-2 py-2">{{ alltrack.basic_price }}</td>
@@ -41,13 +41,19 @@
                     </tr>
                 </tbody>
             </table>
+            <h2 v-if="!datas" class="text-center p-5 text-red-600 text-lg">Data Not found!</h2>
         </div>
+        <div v-else class="loader-parent">
+            <div class="loader"></div>
+        </div>
+        <Paginator @NextData="NextData" :datas.sync="allTracks" />
 
     </div>
 </div>
 </template>
 
 <script>
+import Paginator from '@/components/paginator'
 import {
     mapActions,
     mapGetters
@@ -55,15 +61,28 @@ import {
 export default {
     middleware: ['auth', 'seller'],
     layout: 'seller',
+    components: {
+        Paginator
+    },
     data() {
         return {
             imgurl: process.env.imgUrl,
             show: '',
+            loader: false,
+            datas: []
         }
+    },
+    watch: {
+        'allTracks'() {
+            if (this.allTracks) {
+                this.datas = this.allTracks.data
+            }
+        },
     },
     methods: {
         ...mapActions({
             fetchAllTracks: 'seller/tracks/fetchAllTracks',
+            fetchAllTracksPage: 'seller/tracks/fetchAllTracksPage',
             deleteTrack: 'seller/tracks/deleteTrack'
         }),
         showManage(id) {
@@ -81,13 +100,32 @@ export default {
                     this.deleteTrack(id);
                 }
             })
+        },
+        async NextData(pageNum) {
+            this.$router.push('?page=' + pageNum)
+            this.fetchAllTracksPage(pageNum)
+        },
+        async loaded() {
+            this.loader = true;
+            await this.fetchAllTracks();
+            this.loader = false;
+        },
+        async loadedwithparam(param) {
+            this.loader = true;
+            await this.fetchAllTracksPage(param);
+            this.loader = false;
         }
     },
     computed: mapGetters({
         allTracks: 'seller/tracks/allTracks'
     }),
     created() {
-        this.fetchAllTracks();
+        let param = this.$router.history.current.query.page;
+        if (typeof (param) !== 'undefined') {
+            this.loadedwithparam(param)
+        } else {
+            this.loaded();
+        }
     }
 }
 </script>

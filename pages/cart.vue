@@ -52,10 +52,10 @@
         </div>
         <div class="py-8 flex  flex-col items-center md:flex-row md:items-start justify-between">
             <div class="pr-2 flex items-center pb-4 md:pb-0 ">
-                <div class="wrapper__input pr-5">
+                <!--<div class="wrapper__input pr-5">
                     <input required type="text" placeholder="Coupon Code" name="card_number" id="card_number" class="number__appearance px-5 py-2 border border-gray-400 focus:outline-none text-gray-600 rounded-full w-full">
                 </div>
-                <button class="px-10 py-2 btn-bg rounded-full text-white">Apply Coupon</button>
+                <button class="px-10 py-2 btn-bg rounded-full text-white">Apply Coupon</button>-->
             </div>
             <div class="px-3">
                 <button class="px-10 py-2 btn-bg rounded-full text-white" @click="checkOut">Proceed to Checkout</button>
@@ -89,8 +89,17 @@ export default {
             this.removeCart(id)
         },
         checkOut() {
-            this.$router.push('/checkout')
-        }
+            if (this.authenticated) {
+                this.$router.push('/checkout')
+
+            } else {
+                this.$router.push('login?redirect=checkout');
+            }
+        },
+        hidemodal() {
+            this.$modal.hide('dialog');
+        },
+
     },
     computed: {
         ...mapGetters({

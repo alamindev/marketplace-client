@@ -2,7 +2,7 @@
 <div class="w-full py-10 px-5 md:px-0 container mx-auto">
     <h3 class="color-primary text-xl pb-6 text-left font-bold">Buyer Dashboard</h3>
     <div class="w-full mx-auto">
-        <div class="wrapper w-full">
+        <div class="wrapper w-full" v-if="!loader">
             <table class="lg:w-full table-auto  overflow-y-scroll">
                 <thead>
                     <tr class="text-left">
@@ -14,27 +14,88 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr class="">
-                        <td class="text-gray-600 px-5 py-3"><img src="/images/admin/17.png" width="100" height="100" alt=""></td>
-                        <td data-column="Full Name" class="text-gray-600 px-5 py-2">Kings & Queens</td>
-                        <td data-column="Email" class="text-gray-600 px-5 py-2">Kings & Queens</td>
-                        <td data-column="Invite Code" class="text-gray-600 px-5 py-2">alamin</td>
-                        <td data-column="Invite Code" class="text-gray-600 px-5 py-2">12.32</td>
+                <tbody v-if="datas">
+                    <tr class="" v-for="data in datas" :key="data.id">
+                        <td class="text-gray-600 px-5 py-3">
+                            <img v-if="data.track.image != null" :src="imgurl + 'storage/'+ data.track.image" width="100" class="rounded-lg w-24 h-24" height="100" alt="">
+                        </td>
+                        <td data-column="Product title" class="text-gray-600 px-5 py-2">{{ data.track ? data.track.title : '--'}}</td>
+                        <td data-column="Genre" class="text-gray-600 px-5 py-2">{{data.track.genre? data.track.genre.name : '--' }}</td>
+                        <td data-column="Seller Name" class="text-gray-600 px-5 py-2">{{ data.user.name }}</td>
+                        <td data-column="Price" class="text-gray-600 px-5 py-2">${{ data.amount }}</td>
                         <td class="text-gray-600 px-5 py-2">
-                            <button class="px-10 py-2 btn-bg rounded-full text-white">download</button>
+                            <a :href="imgurl + 'storage/'+ data.track.deliverable_audio" class="px-10 py-2 btn-bg rounded-full text-white" download>download</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <h2 v-if="!datas" class="text-center p-5 text-red-600 text-lg">Data Not found!</h2>
         </div>
+        <div v-else class="loader-parent">
+            <div class="loader"></div>
+        </div>
+        <Paginator @NextData="NextData" :datas.sync="getItems" />
     </div>
 </div>
 </template>
 
 <script>
+import Paginator from '@/components/paginator'
+import {
+    mapActions,
+    mapGetters
+} from "vuex";
 export default {
     middleware: ['auth', 'buyer'],
+    components: {
+        Paginator
+    },
+    data() {
+        return {
+            imgurl: process.env.imgUrl,
+            show: '',
+            loader: false,
+            datas: []
+        }
+    },
+    watch: {
+        'getItems'() {
+            if (this.getItems) {
+                this.datas = this.getItems.data
+            }
+        },
+    },
+    methods: {
+        ...mapActions({
+            fetchAllItems: 'buyer/dashboard/fetchAllItems',
+            fetchAllItemsPage: 'buyer/dashboard/fetchAllItemsPage',
+        }),
+        async NextData(pageNum) {
+            this.$router.push('?page=' + pageNum)
+            this.fetchAllItemsPage(pageNum)
+        },
+        async loaded() {
+            this.loader = true;
+            await this.fetchAllItems();
+            this.loader = false;
+        },
+        async loadedwithparam(param) {
+            this.loader = true;
+            await this.fetchAllItemsPage(param);
+            this.loader = false;
+        }
+    },
+    computed: mapGetters({
+        getItems: 'buyer/dashboard/getItems'
+    }),
+    created() {
+        let param = this.$router.history.current.query.page;
+        if (typeof (param) !== 'undefined') {
+            this.loadedwithparam(param)
+        } else {
+            this.loaded();
+        }
+    }
 }
 </script>
 

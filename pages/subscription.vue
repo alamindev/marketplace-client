@@ -10,7 +10,8 @@
                 <div class="w-48 py-2 px-5 rounded-full border border-blue-700 text-center text-sm ">15 Tracks</div>
             </div>
             <div class="flex justify-center pt-10">
-                <a href="#" class="subscription__btn_one w-48 inline-block text-center py-2 px-5 text-white text-sm rounded-full ">Sign Up</a>
+                <nuxt-link to="register" v-if="!authenticated" class="subscription__btn_one w-48 inline-block text-center py-2 px-5 text-white text-sm rounded-full ">Sign Up</nuxt-link>
+
             </div>
         </div>
         <div class="wrapper wrapper__gradient w-full px-12 py-8">
@@ -21,7 +22,10 @@
                 <div class="w-48 py-2 px-5 rounded-full border border-white text-white text-center text-sm ">Unlimited Tracks</div>
             </div>
             <div class="flex justify-center pt-10">
-                <a href="#" class="bg-primary w-48 inline-block text-center py-2 px-5 text-white text-sm rounded-full ">Sign Up</a>
+                <nuxt-link v-if="!authenticated" to="register" class="subscription__btn_one w-48 inline-block text-center py-2 px-5 text-white text-sm rounded-full ">Sign Up</nuxt-link>
+                <div v-else>
+                    <nuxt-link to="upgrate-account" v-if="user.type == 0 && user.is_admin == 0" class="subscription__btn_one w-48 inline-block text-center py-2 px-5 text-white text-sm rounded-full ">Upgrate now</nuxt-link>
+                </div>
             </div>
         </div>
     </div>

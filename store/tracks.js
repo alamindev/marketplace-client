@@ -32,6 +32,12 @@ export const actions = {
           commit('SET_ALL_TRACK', data.datas);
           commit('SET_IS_SEARCH', true);
     }, 
+    async fetchAllTracksPage({commit}, pageNum) { 
+        const {data} = await this.$axios.get(
+            'tracks?page=' + pageNum
+          ); 
+          commit('SET_ALL_TRACK', data.datas); 
+    }, 
     async fetchSearchTracks({commit}, term) {
         commit('SET_IS_SEARCH', false);
         const {data} = await this.$axios.get(
@@ -41,4 +47,11 @@ export const actions = {
           commit('SET_ALL_SEARCH', data.datas); 
           commit('SET_IS_SEARCH', true);
     }, 
+    async fetchSearchTracksPage({commit}, d) {  
+        const {data} = await this.$axios.get(
+            'tracks/search?q='+ d.term  + '&page='+ d.pageNum,   
+          ); 
+          commit('SET_ALL_SEARCH', data.datas);  
+    }, 
+  
 };
