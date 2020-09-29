@@ -121,7 +121,15 @@ env: {
   baseUrl: process.env.BASE_URL || 'https://laravel.eclipseweb.site/api/',
   imgUrl: 'https://laravel.eclipseweb.site/'
 },
-
+axios: {
+ 
+},
+proxy: {
+  '/api': {
+    target: 'https://laravel.eclipseweb.site',
+    pathRewrite: { '^/api': '/' }
+  }
+},
 auth: {
   strategies: {
     local: {
@@ -154,6 +162,7 @@ auth: {
   */
  axios: { 
   baseURL: "https://laravel.eclipseweb.site/api/",
+  proxy: true
 },
   router: {
     extendRoutes(routes, resolve) {
