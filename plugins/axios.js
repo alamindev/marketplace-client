@@ -10,5 +10,5 @@ export default function({ $axios, store }) {
     $axios.onRequest(() => {
         store.dispatch('validation/clearErrors');
     });
-     $axios.setBaseURL('https://laravel.eclipseweb.site/api/')
+     $axios.setBaseURL('http://laravel.eclipseweb.site/api')
 }

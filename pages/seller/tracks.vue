@@ -18,7 +18,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody v-if="datas">
+                <tbody v-if="datas.length > 0">
                     <tr class="" v-for="alltrack in datas" :key="alltrack.id">
                         <td class="text-gray-600 px-2 py-3">
                             <img v-if="alltrack.image != null" :src="imgurl + 'storage/'+ alltrack.image" width="100" class="rounded-lg w-24 h-24" height="100" alt="">
@@ -41,7 +41,7 @@
                     </tr>
                 </tbody>
             </table>
-            <h2 v-if="!datas" class="text-center p-5 text-red-600 text-lg">Data Not found!</h2>
+            <h2 v-if="datas.length == 0" class="text-center p-5 text-red-600 text-lg">Data Not found!</h2>
         </div>
         <div v-else class="loader-parent">
             <div class="loader"></div>

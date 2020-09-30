@@ -15,7 +15,7 @@
                         <th class="color-blue-500 py-3 px-4 w-56">Total Earnings </th>
                     </tr>
                 </thead>
-                <tbody v-if="transactions">
+                <tbody v-if="transactions.length > 0">
                     <tr class="" v-for="transaction in transactions" :key="transaction.id">
                         <td class="text-gray-600 px-2 py-3">
                             <img v-if="transaction.user.images != null" :src="imgurl + transaction.user.images" width="40" class="rounded-full" height="100" alt="">
@@ -28,7 +28,7 @@
 
                 </tbody>
             </table>
-            <h2 v-if="!transactions" class="text-center p-5 text-red-600 text-lg">Data Not found!</h2>
+            <h2 v-if="transactions.length == 0" class="text-center p-5 text-red-600 text-lg">Data Not found!</h2>
         </div>
         <div v-else class="loader-parent">
             <div class="loader"></div>

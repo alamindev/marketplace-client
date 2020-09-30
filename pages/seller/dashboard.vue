@@ -29,7 +29,7 @@
                         <th class="color-blue-500 py-3  "></th>
                     </tr>
                 </thead>
-                <tbody v-if="datas">
+                <tbody v-if="datas.length > 0">
                     <tr class="" v-for="payment in datas" :key="payment.id">
                         <td></td>
                         <td data-column="Title" class="text-gray-600 px-4 py-2">{{ payment.track.title }}</td>
@@ -40,7 +40,7 @@
                     </tr>
                 </tbody>
             </table>
-            <h2 v-if="!datas" class="text-center p-5 text-red-600 text-lg">Data Not found!</h2>
+            <h2 v-if="datas.length == 0" class="text-center p-5 text-red-600 text-lg">Data Not found!</h2>
         </div>
         <div v-else class="loader-parent">
             <div class="loader"></div>

@@ -18,7 +18,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody v-if="datas">
+                <tbody v-if="datas.length > 0">
                     <tr class="" v-for="user in datas" :key="user.id">
                         <td class="text-gray-600 px-2 py-3">
                             <img v-if="user.images != null" :src="imgurl + user.images" width="40" class="rounded-full" height="100" alt="">
@@ -43,7 +43,7 @@
 
                 </tbody>
             </table>
-            <h2 v-if="!datas" class="text-center p-5 text-red-600 text-lg">Data Not found!</h2>
+            <h2 v-if="datas.length == 0" class="text-center p-5 text-red-600 text-lg">Data Not found!</h2>
         </div>
         <div v-else class="loader-parent">
             <div class="loader"></div>
