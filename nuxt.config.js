@@ -14,7 +14,7 @@ export default {
   /*
   ** Headers of the page
   ** See https://nuxtjs.org/api/configuration-head
-  */
+  */  
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -70,7 +70,8 @@ export default {
 ],
 '@nuxtjs/axios',
 '@nuxtjs/auth',
-'vue-sweetalert2/nuxt'
+'vue-sweetalert2/nuxt',
+'@nuxtjs/proxy'
   ],
   /*
   ** Build configuration
@@ -126,9 +127,11 @@ axios: {
 },
 proxy: {
   '/api': {
-    target: 'https://laravel.eclipseweb.site',
-    pathRewrite: { '^/api': '/' }
-  }
+    target: 'https://laravel.eclipseweb.site/',
+    pathRewrite: {
+      '^/api' : '/'
+      }
+    }
 },
 auth: {
   strategies: {
@@ -161,8 +164,10 @@ auth: {
   ** Axios module configuration
   */
  axios: { 
-  baseURL: "https://laravel.eclipseweb.site/api",
-  proxy: true
+  baseURL: "https://laravel.eclipseweb.site/api/",
+  proxy: true,
+  proxyHeaders: false,
+  credentials: false
 },
   router: {
     extendRoutes(routes, resolve) {

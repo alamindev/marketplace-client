@@ -17,6 +17,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.0",
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/proxy": "^2.0.1",
     "cleave.js": "^1.6.0",
     "file-loader": "^6.1.0",
     "node-sass": "^4.14.1",

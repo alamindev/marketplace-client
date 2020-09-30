@@ -152,7 +152,7 @@ export default {
             try {
                 let {
                     data
-                } = await this.$axios.post('/auth/register', datas);
+                } = await this.$axios.post('/auth/registers', datas);
                 if (data.success === true) {
                     this.id = data.id
                     this.$modal.show('dialog');
