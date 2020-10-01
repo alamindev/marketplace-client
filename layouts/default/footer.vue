@@ -8,8 +8,12 @@
                     <li class="pb-2"><a href="#" class="color-primary ">About us</a></li>
                     <li class="pb-2"><a href="#" class="color-primary ">Jobs</a></li>
                     <li class="pb-2"><a href="#" class="color-primary ">Blog</a></li>
-                    <li class="pb-2"><a href="#" class="color-primary ">Sign in</a></li>
-                    <li class="pb-2"><a href="#" class="color-primary ">Sign UP</a></li>
+                    <li class="pb-2">
+                        <nuxt-link to="login" class="color-primary ">Sign in</nuxt-link>
+                    </li>
+                    <li class="pb-2">
+                        <nuxt-link to="register" class="color-primary ">Sign UP</nuxt-link>
+                    </li>
                 </ul>
             </div>
             <div class="p-1 text-center md:text-left">

@@ -1,7 +1,7 @@
 export default function({ $axios, store }) {
     $axios.onError(error => {
         if (error.response.status === 422) {
-            store.dispatch('validation/setErrors', error.response.data.errors);
+            store.dispatch('validation/setErrors', error.response.data.errors ? error.response.data.errors : '');
         }
 
         return Promise.reject(error);
@@ -10,5 +10,5 @@ export default function({ $axios, store }) {
     $axios.onRequest(() => {
         store.dispatch('validation/clearErrors');
     });
-     $axios.setBaseURL('https://laravel.eclipseweb.site/api/')
+     $axios.setBaseURL(process.env.baseUrl)
 }

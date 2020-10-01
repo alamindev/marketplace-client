@@ -1,4 +1,7 @@
  
+ html{
+   font-family: 'Helvetica Neue'  !important;
+ }
  :root{
     --color-primary: #0E3D67;
     --color-secondary: #3E4855;
@@ -286,4 +289,12 @@ and also iPads specifically.
 button:focus{
   box-shadow: none;
   outline: none;
+}
+
+.page-enter-active, .page-leave-active {
+  transition: all .25s ease-out;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+  transform-origin: 50% 50%;
 }

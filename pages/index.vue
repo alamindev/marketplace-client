@@ -3,8 +3,8 @@
     <div class="py-24 bg-center bg-no-repeat bg-cover" style="background-image: linear-gradient(249deg, #4285C2 0%, #0E3D67 100%),url('/images/banner.png'); background-blend-mode: screen">
         <div class="container mx-auto">
             <div class="w-full md:w-9/12 lg:w-8/12 px-5 md:px-0 flex justify-center flex-col items-center md:items-start">
-                <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white uppercase text-center md:text-left banner__title">A Place To Buy Beats From The world's Best producers</h1>
-                <h2 class="text-2xl font-semibold text-white pt-3 pb-6 text-center md:text-left">Find the perfect Beat for you project </h2>
+                <h1 class="text-3xl md:text-5xl   font-bold text-white uppercase text-center md:text-left banner__title lg:pr-5">A Place To Buy Beats From The world's Best producers</h1>
+                <h2 class="text-2xl  text-white pt-3 pb-6 text-center md:text-left">Find the perfect Beat for you project </h2>
                 <div class="relative  w-2/3 lg:w-1/2 pb-10 lg:pb-20">
                     <input type="text" v-on:keyup.enter="searchQuery" v-model="term" placeholder="Search" name="search" class="w-full py-3 pl-5 pr-10 border-none rounded-full">
                     <font-awesome-icon class="cursor-pointer text-xl text-gray-500 absolute right-0 mr-5 mt-4" @click="searchQuery" :icon="['fas', 'search']" />
@@ -56,7 +56,7 @@
         </div>
         <div class="container mx-auto py-8">
             <div class="-mx-5">
-                <VueSlickCarousel v-bind="slickOptions" ref="carousel" v-if="get_latest_tracks.length">
+                <VueSlickCarousel v-bind="slickOptions" ref="carousel" v-if="get_latest_tracks.length > 0">
                     <div class="slide" v-for="latest_track in get_latest_tracks" :key="latest_track.id">
                         <div class="py-2 mx-5 custom__carousel hover__area">
                             <div class="relative">
@@ -82,6 +82,7 @@
                         </div>
                     </div>
                 </VueSlickCarousel>
+                <div v-else class="text-center text-lg"> Data not found</div>
             </div>
         </div>
     </div>
@@ -100,7 +101,7 @@
         </div>
         <div class="container mx-auto py-8">
             <div class="-mx-5">
-                <VueSlickCarousel v-bind="slickOptions" ref="carousel2" v-if="get_top_in_genres.length">
+                <VueSlickCarousel v-bind="slickOptions" ref="carousel2" v-if="get_top_in_genres.length > 0">
                     <div class="slide" v-for="top_in_genre in get_top_in_genres" :key="top_in_genre.id">
                         <div class="py-2 mx-5 custom__carousel hover__area">
                             <div class="relative">
@@ -127,6 +128,7 @@
                     </div>
 
                 </VueSlickCarousel>
+                <div v-else class="text-center text-lg text-white"> Data not found</div>
             </div>
         </div>
     </div>
@@ -145,7 +147,7 @@
         </div>
         <div class="container mx-auto py-8">
             <div class="-mx-5">
-                <VueSlickCarousel v-bind="slickOptions" ref="carousel3" v-if="get_feature_tracks.length">
+                <VueSlickCarousel v-bind="slickOptions" ref="carousel3" v-if="get_feature_tracks.length > 0">
                     <div class="slide" v-for="feature_track in get_feature_tracks" :key="feature_track.id">
                         <div class="py-2 mx-5 custom__carousel hover__area">
                             <div class="relative">
@@ -171,6 +173,7 @@
                         </div>
                     </div>
                 </VueSlickCarousel>
+                <div v-else class="text-center text-lg"> Data not found</div>
             </div>
         </div>
     </div>
@@ -313,6 +316,13 @@ export default {
 <style lang="scss">
 .banner__title {
     text-shadow: 1px 2px 3px #222;
+    font-size: 65px;
+}
+
+@media only screen and (max-width: 760px) {
+    .banner__title {
+        font-size: 45px;
+    }
 }
 
 .tracks__gradient {

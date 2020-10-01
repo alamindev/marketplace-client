@@ -8,7 +8,7 @@
             <div class="wrapper w-full px-8 py-8">
                 <div class="py-5">
                     <div class="wrapper__input pb-8">
-                        <the-mask required mask="#### #### #### ####" :class="{ 'border-red-500': errors.card_number }" placeholder="Cart Number" v-model="card.card_number" name="card_number" id="card_number" class="number__appearance px-5 py-2 border border-gray-400 focus:outline-none text-gray-600 rounded-full w-full"></the-mask>
+                        <the-mask required mask="#### #### #### ####" :class="{ 'border-red-500':  errors.card_number }" placeholder="Cart Number" v-model="card.card_number" name="card_number" id="card_number" class="number__appearance px-5 py-2 border border-gray-400 focus:outline-none text-gray-600 rounded-full w-full"></the-mask>
                         <div class="text-red-500 pl-3" v-if="errors.card_number">
                             {{errors.card_number[0]}}
                         </div>
@@ -43,7 +43,6 @@
             </div>
         </form>
         <div class="w-full   p-5" v-else>
-            <p v-if="error" class="text-center pb-10 text-lg text-red-600 ">{{ error }}</p>
             <div class="py-5 flex flex-col justify-center items-center">
                 <h2 class="text-lg">Are you Sure to proceed pay by existing card</h2>
                 <p>Or</p>

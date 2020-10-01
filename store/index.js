@@ -2,6 +2,8 @@ export const state = () => ({
   latest_tracks: [], 
   top_in_genres: [], 
   feature_tracks: [],  
+  is_premium: false,  
+  is_save_card: false,  
 });
 export const getters = {
     authenticated(state) {
@@ -18,6 +20,12 @@ export const getters = {
     },
     get_feature_tracks(state){
       return state.feature_tracks
+    },
+    get_is_premium(state){
+      return state.is_premium
+    },
+    get_is_save_card(state){
+      return state.is_save_card
     }
 }
  
@@ -25,6 +33,8 @@ export const mutations = {
   FETCH_LATEST_TRACKS: (state, datas) => (state.latest_tracks = datas),   
   FETCH_TOP_IN_GENRES: (state, datas) => (state.top_in_genres = datas),   
   FETCH_FEATURE_TRACKS: (state, datas) => (state.feature_tracks = datas),   
+  FETCH_IS_PREMIUM: (state, data) => (state.is_premium = data),   
+  FETCH_IS_SAVE_CARD: (state, data) => (state.is_save_card = data),   
 };
 
 
@@ -46,5 +56,19 @@ export const actions = {
       'feature-tracks'
     ); 
       commit('FETCH_FEATURE_TRACKS', data.datas);  
+  }, 
+  async fetch_is_premium({commit}){ 
+    const {data} = await this.$axios.get(
+      'check-is-premium'
+    ); 
+    if (data.success == true) commit('FETCH_IS_PREMIUM', true); 
+       
+  }, 
+  async fetch_is_save_card({commit}){ 
+    const {data} = await this.$axios.get(
+      'check-savecard'
+    ); 
+    if (data.success == true) commit('FETCH_IS_SAVE_CARD', true); 
+       
   }, 
 };

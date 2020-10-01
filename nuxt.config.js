@@ -70,8 +70,7 @@ export default {
 ],
 '@nuxtjs/axios',
 '@nuxtjs/auth',
-'vue-sweetalert2/nuxt',
-'@nuxtjs/proxy'
+'vue-sweetalert2/nuxt', 
   ],
   /*
   ** Build configuration
@@ -119,20 +118,13 @@ router: {
 },
 
 env: {
-  baseUrl: process.env.BASE_URL || 'https://laravel.eclipseweb.site/api/',
-  imgUrl: 'https://laravel.eclipseweb.site/'
+  baseUrl: process.env.BASE_URL || 'http://localhost:8000/api/',
+  imgUrl: 'http://localhost:8000/',
+  paypal_client: 'https://www.paypal.com/sdk/js?client-id=Af6ZEnsJmjw_YRvOXhfud1zN31vdX9BhrepD0XZLB0shXIAGo3IduV7hHWL9xxbQsHf1r1mrEjM9eswo'
 },
 axios: {
  
-},
-proxy: {
-  '/api': {
-    target: 'https://laravel.eclipseweb.site/',
-    pathRewrite: {
-      '^/api' : '/'
-      }
-    }
-},
+}, 
 auth: {
   strategies: {
     local: {
@@ -163,8 +155,7 @@ auth: {
   /*
   ** Axios module configuration
   */
- axios: { 
-  baseURL: "https://laravel.eclipseweb.site/api/",
+ axios: {  
   proxy: true,
   proxyHeaders: false,
   credentials: false

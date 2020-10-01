@@ -17,14 +17,11 @@
                 <nuxt-link to="/tracks" class="block mt-4 pr-4   font-normal lg:inline-block lg:mt-0  color-secondary hover:text-gray-900">
                     Explore
                 </nuxt-link>
-                <a href="#responsive-header" class="block mt-4 font-normal lg:inline-block lg:mt-0  color-secondary hover:text-gray-900 mr-4">
-                    Beats
-                </a>
                 <nuxt-link to="/subscription" class="block mt-4 font-normal lg:inline-block lg:mt-0  color-secondary hover:text-gray-900">
-                    subscription plan
+                    Subscription plan
                 </nuxt-link>
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center py-4 md:py-0">
                 <template v-if="authenticated">
                     <div class="right-area w-36 flex">
                         <cartCounter />

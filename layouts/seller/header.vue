@@ -7,7 +7,9 @@
             </span>
             <span class="block ml-3 leading-none text-lg">Seller Account</span>
         </h1>
-        <div class="right-area w-36 flex">
+        <div class="right-area w-36 flex items-center">
+            <nuxt-link to="/upgrade-account" v-if="!isPremium" class="btn-bg py-1 px-5 text-white rounded-full">Upgrade now</nuxt-link>
+            <button v-else class="btn-bg py-1 px-5 text-white rounded-full">Your account upgraded</button>
             <div class="admin-profie flex md:pl-5 items-center cursor-pointer relative" @click="menuClick" v-click-outside="hide">
                 <authImg />
                 <div class="absolute top-0 left-0 mt-12  bg-white shadow rounded-lg" v-if="dropdown">
@@ -22,6 +24,10 @@
 </template>
 
 <script>
+import {
+    mapActions,
+    mapGetters
+} from "vuex";
 import authImg from '@/components/auth/authImg';
 export default {
     components: {
@@ -29,10 +35,28 @@ export default {
     },
     data() {
         return {
-            dropdown: false
+            dropdown: false,
+            isPremium: false,
         }
     },
+    watch: {
+        'get_is_premium'() {
+            if (this.get_is_premium == 'false') {
+                this.isPremium = true
+            }
+        },
+
+    },
+    computed: {
+        ...mapGetters({
+            get_is_premium: 'get_is_premium',
+        }),
+
+    },
     methods: {
+        ...mapActions({
+            fetch_is_premium: 'fetch_is_premium',
+        }),
         toggle() {
             this.$emit('clicked')
         },
@@ -44,7 +68,18 @@ export default {
         },
         signOut() {
             this.$auth.logout();
-        }
+        },
+        async check() {
+            if (this.authenticated) {
+                await this.fetch_is_premium();
+                if (this.get_is_premium == true) {
+                    this.isPremium = true
+                }
+            }
+        },
+    },
+    created() {
+        this.check()
     }
 }
 </script>

@@ -1,40 +1,43 @@
 <template>
 <div class="w-full py-10 px-5 md:px-0 container mx-auto">
     <h3 class="color-primary text-3xl pb-12 text-center md:text-left font-medium">Search Results</h3>
-    <div v-if="isSearch">
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 " v-if="datas">
-            <div class="py-4 mx-5 hover__area" v-for="alltrack in datas" :key="alltrack.id">
-                <div class="relative">
-                    <img v-if="alltrack.image != null" :src="imgurl + 'storage/'+ alltrack.image" width="100" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" height="100" alt="">
-                    <div class="overlay absolute left-0 top-0 w-full h-full bg-black bg-opacity-50 rounded-lg transition-all duration-200 ease-in-out">
-                        <div class="flex justify-center items-center h-full">
+    <div v-if="datas.length > 0">
+        <div v-if="isSearch">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 ">
+                <div class="py-4 mx-5 hover__area" v-for="alltrack in datas" :key="alltrack.id">
+                    <div class="relative">
+                        <img v-if="alltrack.image != null" :src="imgurl + 'storage/'+ alltrack.image" width="100" class="w-full rounded-lg mb-2 shadow border border-gray-700 h-64 object-cover" height="100" alt="">
+                        <div class="overlay absolute left-0 top-0 w-full h-full bg-black bg-opacity-50 rounded-lg transition-all duration-200 ease-in-out">
+                            <div class="flex justify-center items-center h-full">
 
-                            <button v-if="getDatas.includes(alltrack.id)" class="px-4 shadow-lg bg-white py-2 rounded-full hover:bg-blue-800 hover:text-white transition-all duration-200 ease-in-out">Added to Cart</button>
-                            <button @click="addToCart(alltrack)" v-else class="px-4 shadow-lg bg-white py-2 rounded-full hover:bg-blue-800 hover:text-white transition-all duration-200 ease-in-out">Add to Cart</button>
+                                <button v-if="getDatas.includes(alltrack.id)" class="px-4 shadow-lg bg-white py-2 rounded-full hover:bg-blue-800 hover:text-white transition-all duration-200 ease-in-out">Added to Cart</button>
+                                <button @click="addToCart(alltrack)" v-else class="px-4 shadow-lg bg-white py-2 rounded-full hover:bg-blue-800 hover:text-white transition-all duration-200 ease-in-out">Add to Cart</button>
 
-                            <button v-if="isPlaying && (data.id === alltrack.id )" @click="pause" class="shadow-lg bg-white rounded-full flex items-center justify-center ml-3 w-12 h-12 hover:bg-blue-800  text-gray-700 hover:text-white transition-all duration-200 ease-in-out">
-                                <font-awesome-icon class="text-2xl " :icon="['fas', 'pause']" />
-                            </button>
-                            <button v-else @click="playing(alltrack)" class="shadow-lg bg-white rounded-full flex items-center justify-center ml-3 w-12 h-12 hover:bg-blue-800  text-gray-700 hover:text-white transition-all duration-200 ease-in-out">
-                                <font-awesome-icon class="text-2xl " :icon="['fas', 'play']" />
-                            </button>
+                                <button v-if="isPlaying && (data.id === alltrack.id )" @click="pause" class="shadow-lg bg-white rounded-full flex items-center justify-center ml-3 w-12 h-12 hover:bg-blue-800  text-gray-700 hover:text-white transition-all duration-200 ease-in-out">
+                                    <font-awesome-icon class="text-2xl " :icon="['fas', 'pause']" />
+                                </button>
+                                <button v-else @click="playing(alltrack)" class="shadow-lg bg-white rounded-full flex items-center justify-center ml-3 w-12 h-12 hover:bg-blue-800  text-gray-700 hover:text-white transition-all duration-200 ease-in-out">
+                                    <font-awesome-icon class="text-2xl " :icon="['fas', 'play']" />
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <h2 class="text-lg font-bold color-primary">{{ alltrack.title }}</h2>
-                <p class="text-base color-muted">By {{ alltrack.user.name }}</p>
+                    <h2 class="text-lg font-bold color-primary">{{ alltrack.title }}</h2>
+                    <p class="text-base color-muted">By {{ alltrack.user.name }}</p>
+                </div>
             </div>
+
         </div>
-        <h1 class="py-8 px-5 text-center text-2xl color-primary" v-else>Search item not found!</h1>
+        <div v-else class="loader-parent">
+            <div class="loader"></div>
+        </div>
+        <AddToCart />
+        <div class="flex justify-center">
+            <Paginator @NextData="NextData" :datas.sync="searchTrack" />
+        </div>
     </div>
-    <div v-else class="loader-parent">
-        <div class="loader"></div>
-    </div>
-    <AddToCart />
-    <div class="flex justify-center">
-        <Paginator @NextData="NextData" :datas.sync="searchTrack" />
-    </div>
+    <h1 class="py-8 px-5 text-center text-2xl color-primary" v-else>Search item not found!</h1>
 </div>
 </template>
 
